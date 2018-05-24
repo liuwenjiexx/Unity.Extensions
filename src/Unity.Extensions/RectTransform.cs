@@ -36,7 +36,7 @@ namespace LWJ.Unity
 
 
 
-        public static Rect OuterRect(this RectTransform rectTrans)
+        public static Rect GetOuterRect(this RectTransform rectTrans)
         {
             Rect rect;
             rectTrans.rect

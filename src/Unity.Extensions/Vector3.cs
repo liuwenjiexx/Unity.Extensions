@@ -356,27 +356,7 @@ namespace LWJ.Unity
             }
             return result;
         }
-        public static bool IsInPolygon(this Vector2Int testPoint, Vector2Int[] polygon)
-        {
-            bool result = false;
-            int j = polygon.Length - 1;
-            Vector2Int start, end;
-            for (int i = 0, len = polygon.Length; i < len; i++)
-            {
-                start = polygon[j];
-                end = polygon[i];
-                if (end.y < testPoint.y && start.y >= testPoint.y || start.y < testPoint.y && end.y >= testPoint.y)
-                {
-                    if (end.x + (testPoint.y - end.y) / ((float)(start.y - end.y)) * (start.x - end.x) < testPoint.x)
-                    {
-                        result = !result;
-                    }
-                }
-                j = i;
-            }
-            return result;
-        }
-
+       
 
 
 
