@@ -28,7 +28,7 @@ namespace LWJ.Unity
             float num1 = (vector1.x * vector2.y) - (vector2.x * vector1.y);
             float num2 = (vector1.x * vector2.x) + (vector1.y * vector2.y);
 
-            return Mathf.Atan2(num1, num2) * Mathf.Rad2Deg * -1;
+            return Mathf.Atan2(num1, num2) * Mathf.Rad2Deg;
         }
 
 
