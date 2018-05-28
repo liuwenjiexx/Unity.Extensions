@@ -426,5 +426,20 @@ namespace LWJ.Unity
 
         }
 
+        public static void ResetChildCount(this Transform transform, int count, GameObject itemPrefab, Action<GameObject> newCallback = null)
+        {
+            while (transform.childCount > count)
+            {
+                GameObject.DestroyImmediate(transform.GetChild(0).gameObject);
+            }
+            while (transform.childCount < count)
+            {
+                var go = GameObject.Instantiate(itemPrefab, transform);
+                go.SetActive(true);
+                if (newCallback != null)
+                    newCallback(go);
+            }
+        }
+
     }
 }
