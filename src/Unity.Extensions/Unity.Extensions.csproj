@@ -40,11 +40,11 @@
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Xml" />
     <Reference Include="UnityEngine">
-      <HintPath>..\..\..\Build\Debug\2017.3\UnityEngine.dll</HintPath>
+      <HintPath>..\..\..\Build\Debug\UnityEngine.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="UnityEngine.UI">
-      <HintPath>..\..\..\Build\Debug\2017.3\UnityEngine.UI.dll</HintPath>
+      <HintPath>..\..\..\Build\Debug\UnityEngine.UI.dll</HintPath>
       <Private>False</Private>
     </Reference>
   </ItemGroup>

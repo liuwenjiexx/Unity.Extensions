@@ -40,21 +40,27 @@
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Xml" />
     <Reference Include="UnityEditor">
-      <HintPath>..\..\..\Build\Debug\2017.3\UnityEditor.dll</HintPath>
+      <HintPath>..\..\..\Build\Debug\UnityEditor.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="UnityEngine">
-      <HintPath>..\..\..\Build\Debug\2017.3\UnityEngine.dll</HintPath>
+      <HintPath>..\..\..\Build\Debug\UnityEngine.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="UnityEngine.UI">
-      <HintPath>..\..\..\Build\Debug\2017.3\UnityEngine.UI.dll</HintPath>
+      <HintPath>..\..\..\Build\Debug\UnityEngine.UI.dll</HintPath>
       <Private>False</Private>
     </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Extensions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Unity.Extensions\Unity.Extensions.csproj">
+      <Project>{6d1d7431-91b2-402a-9824-c0df5802adc8}</Project>
+      <Name>Unity.Extensions</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
