@@ -109,14 +109,14 @@ namespace LWJ.Unity
             return false;
         }
 
-        public static void DrawLocalRectGizmos(this RectTransform rectTrans, Color color)
+        public static void GizmosDrawRectLocal(this RectTransform rectTrans, Color color)
         {
             rectTrans.rect.EnumeratePoints()
                 .Select(o => rectTrans.TransformPoint(o))
-                .DrawPathGizmos(color, true);
+                .GizmosDrawPath(color, true);
         }
 
-        public static void DrawRectGizmos(this RectTransform rectTrans, Color color)
+        public static void GizmosDrawRect(this RectTransform rectTrans, Color color)
         {
             Rect rect;
             rectTrans.rect
@@ -126,7 +126,7 @@ namespace LWJ.Unity
             Vector2 halfSize = rect.size * 0.5f;
             rect.EnumeratePoints()
                 .Select(o => (Vector3)(o - halfSize))
-                .DrawPathGizmos(color, true);
+                .GizmosDrawPath(color, true);
         }
 
     }

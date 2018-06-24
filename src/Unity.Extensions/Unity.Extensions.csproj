@@ -77,6 +77,6 @@
     </PreBuildEvent>
   </PropertyGroup>
   <PropertyGroup>
-    <PostBuildEvent>copy $(TargetPath) $(SolutionDir)\src\UnityExtensions\Assets\LWJ\Extensions</PostBuildEvent>
+    <PostBuildEvent>copy $(TargetPath) $(SolutionDir)\src\Unity.Extensions.Unity\Assets\LWJ\Extensions</PostBuildEvent>
   </PropertyGroup>
 </Project>

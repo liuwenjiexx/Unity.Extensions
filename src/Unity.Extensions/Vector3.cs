@@ -356,14 +356,126 @@ namespace LWJ.Unity
             }
             return result;
         }
-       
 
 
+
+        public static Vector2 ScreenPointReverseY(this Vector2 screenPoint)
+        {
+            screenPoint.y = Screen.height - screenPoint.y;
+            return screenPoint;
+        }
+        public static Vector2 ScreenPointReverseY(this Vector2 screenPoint, int screenHeight)
+        {
+            screenPoint.y = screenHeight - screenPoint.y;
+            return screenPoint;
+        }
+        public static Rect ToRect(this Vector2 center, Vector2 size)
+        {
+            return new Rect(center.x - size.x * 0.5f, center.y - size.y * 0.5f, size.x, size.y);
+        }
+
+        public static void FindNear2Point(this Vector2[] a, Vector2[] b, out int aIndex, out int bIndex)
+        {
+            float n;
+
+            n = Mathf.Infinity;
+            aIndex = -1;
+            bIndex = -1;
+            float n2;
+            for (int i = 0; i < a.Length; i++)
+            {
+                Vector2 aPoint = a[i];
+
+                for (int j = 0; j < b.Length; j++)
+                {
+                    n2 = Vector2.SqrMagnitude(aPoint - b[j]);
+                    if (n2 < n)
+                    {
+                        aIndex = i;
+                        bIndex = j;
+                        n = n2;
+                    }
+                }
+            }
+
+        }
+
+        #region GL Draw
+
+        public static void GLDrawLine(this Vector3 start, Vector3 end, int lineWidth)
+        {
+            float x1 = start.x, y1 = start.y, z1 = start.z, x2 = end.x, y2 = end.y, z2 = end.z;
+
+            int halfWidth = (int)(lineWidth * 0.5f);
+            GL.Vertex3(x1, y1, z1);
+            GL.Vertex3(x2, y2, z2);
+            for (float i = 0; i < lineWidth; ++i)
+            {
+                if (i % 2 == 0)
+                {
+                    for (float j = -halfWidth; j < halfWidth; ++j)
+                    {
+                        GL.Vertex3((x1 - (i * 0.5f)), (y1 + j), z1);
+                        GL.Vertex3((x2 - (i * 0.5f)), (y2 + j), z2);
+                    }
+                }
+                else
+                {
+                    for (float j = -halfWidth; j < halfWidth; ++j)
+                    {
+                        GL.Vertex3((x1 + (i * 0.5f)), (y1 + j), z1);
+                        GL.Vertex3((x2 + (i * 0.5f)), (y2 + j), z2);
+                    }
+                }
+            }
+
+        }
+
+
+        public static void GLDrawPath(this IEnumerable<Vector3> points)
+        {
+            GLDrawPath(points, 1, false);
+        }
+
+        public static void GLDrawPath(this IEnumerable<Vector3> points, int lineWidth)
+        {
+            GLDrawPath(points, lineWidth, false);
+        }
+
+        public static void GLDrawPath(this IEnumerable<Vector3> points, int lineWidth, bool closed)
+        {
+            GL.Begin(GL.LINE_STRIP);
+
+            Vector3 first = new Vector3();
+            Vector3 prev = new Vector3();
+            bool isFirst = true;
+            foreach (var point in points)
+            {
+                if (isFirst)
+                {
+                    first = point;
+                    isFirst = false;
+                }
+                else
+                {
+                    prev.GLDrawLine(point, lineWidth);
+                }
+
+                prev = point;
+            }
+            if (!isFirst && closed)
+            {
+                prev.GLDrawLine(first, lineWidth);
+            }
+            GL.End();
+        }
+
+        #endregion
 
 
         #region Gizmos Draw 
 
-        public static void DrawPathGizmos(this IEnumerable<Vector3> points, Color color, bool closed)
+        public static void GizmosDrawPath(this IEnumerable<Vector3> points, Color color, bool closed)
         {
             Vector3 first = new Vector3();
             Vector3 last = new Vector3();
@@ -399,7 +511,7 @@ namespace LWJ.Unity
 
         #region Debug Draw
 
-        public static void DrawPath(this IEnumerable<Vector3> points, Color color, float duration, bool closed)
+        public static void DebugDrawPath(this IEnumerable<Vector3> points, Color color, float duration, bool closed)
         {
             Vector3 first = new Vector3();
             Vector3 last = new Vector3();
@@ -425,5 +537,152 @@ namespace LWJ.Unity
         }
 
         #endregion
+
+        #region Bezier Curve
+
+
+
+        /// <summary>
+        /// B(t) = (1 - t)3 P0 + 3 (1 - t)2 t P1 + 3 (1 - t) t2 P2 + t3 P3 
+        /// https://catlikecoding.com/unity/tutorials/curves-and-splines/
+        /// </summary>
+        /// <param name="t"></param>
+        /// <param name="start"></param>
+        /// <param name="end"></param>
+        /// <param name="startTangent"></param>
+        /// <param name="endTangent"></param>
+        public static Vector3 GetBezierPoint(this Vector3 start, Vector3 end, Vector3 startTangent, Vector3 endTangent, float t)
+        {
+            t = Mathf.Clamp01(t);
+            float oneMinusT = 1f - t;
+            float tt = t * t;
+            float oneMinusT2 = oneMinusT * oneMinusT;
+            return
+                 oneMinusT2 * oneMinusT * start +
+                 3f * oneMinusT2 * t * startTangent +
+                 3f * oneMinusT * tt * endTangent +
+                 tt * t * end;
+        }
+
+        public static Vector2 GetBezierPoint(this Vector2 start, Vector2 end, Vector2 startTangent, Vector2 endTangent, float t)
+        {
+            t = Mathf.Clamp01(t);
+            float oneMinusT = 1f - t;
+            float tt = t * t;
+            float oneMinusT2 = oneMinusT * oneMinusT;
+            return
+                 oneMinusT2 * oneMinusT * start +
+                 3f * oneMinusT2 * t * startTangent +
+                 3f * oneMinusT * tt * endTangent +
+                 tt * t * end;
+        }
+
+        /// <summary>
+        /// B'(t) = 3 (1 - t)2 (P1 - P0) + 6 (1 - t) t (P2 - P1) + 3 t2 (P3 - P2).
+        /// </summary>
+        /// <param name="start"></param>
+        /// <param name="end"></param>
+        /// <param name="startTangent"></param>
+        /// <param name="endTangent"></param>
+        /// <param name="t"></param>
+        /// <returns></returns>
+        public static Vector3 GetBezierVelocity(this Vector3 start, Vector3 end, Vector3 startTangent, Vector3 endTangent, float t)
+        {
+            t = Mathf.Clamp01(t);
+            float oneMinusT = 1f - t;
+            return
+                3f * oneMinusT * oneMinusT * (startTangent - start) +
+                6f * oneMinusT * t * (endTangent - startTangent) +
+                3f * t * t * (end - endTangent);
+        }
+
+        public static Vector2 GetBezierVelocity(this Vector2 start, Vector2 end, Vector2 startTangent, Vector2 endTangent, float t)
+        {
+            t = Mathf.Clamp01(t);
+            float oneMinusT = 1f - t;
+            return
+                3f * oneMinusT * oneMinusT * (startTangent - start) +
+                6f * oneMinusT * t * (endTangent - startTangent) +
+                3f * t * t * (end - endTangent);
+        }
+
+        public static IEnumerable<Vector3> EnumerateBezierPoints(this Vector3 start, Vector3 end, Vector3 startTangent, Vector3 endTangent, float stepDistance)
+        {
+            if (stepDistance <= 0f)
+            {
+                yield return start;
+                yield return end;
+                yield break;
+            }
+
+            Vector3 dir = end - start;
+            float totalDist = dir.magnitude;
+            if (totalDist <= 0f)
+            {
+                yield return start;
+                yield return end;
+                yield break;
+            }
+            float t = 0;
+            float n = stepDistance / totalDist;
+
+            while (true)
+            {
+
+                if (t < 1f)
+                {
+                    yield return GetBezierPoint(start, end, startTangent, endTangent, t);
+                    t += n;
+                }
+                else
+                {
+                    yield return end;
+                    break;
+                }
+
+            } 
+        }
+
+        public static IEnumerable<Vector2> EnumerateBezierPoints(this Vector2 start, Vector2 end, Vector2 startTangent, Vector2 endTangent, float stepDistance)
+        {
+            if (stepDistance <= 0f)
+            {
+                yield return start;
+                yield return end;
+                yield break;
+            }
+
+            Vector2 dir = end - start;
+            float totalDist = dir.magnitude;
+            if (totalDist <= 0f)
+            {
+                yield return start;
+                yield return end;
+                yield break;
+            }
+            float t = 0;
+            float n = stepDistance / totalDist;
+
+            while (true)
+            {
+
+                if (t < 1f)
+                {
+                    yield return GetBezierPoint(start, end, startTangent, endTangent, t);
+                    t += n;
+                }
+                else
+                {
+                    yield return end;
+                    break;
+                }
+
+            }
+        }
+        #endregion
+
+
     }
+
+
 }
