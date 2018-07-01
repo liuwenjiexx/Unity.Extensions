@@ -99,13 +99,13 @@ namespace LWJ.Unity
             yield return new Vector2(max.x, min.y);
         }
 
-        public static Rect AdjustInRect(this Rect src, Rect dst)
+        public static Rect AdjustInRect(this Rect src, Rect container)
         {
 
-            Vector2 dstSize = dst.size;
+            Vector2 dstSize = container.size;
             Vector2 srcSize = src.size;
-            Vector2 minOffset = dst.min - src.min;
-            Vector2 maxOffset = dst.max - src.max;
+            Vector2 minOffset = container.min - src.min;
+            Vector2 maxOffset = container.max - src.max;
             Vector2 offset = Vector2.zero;
 
             if (srcSize.x >= dstSize.x)

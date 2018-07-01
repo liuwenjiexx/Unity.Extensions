@@ -128,6 +128,24 @@ namespace LWJ.Unity
                 .Select(o => (Vector3)(o - halfSize))
                 .GizmosDrawPath(color, true);
         }
+        public static void DebugDrawRectLocal(this RectTransform rectTrans, Color color, float duration)
+        {
+            rectTrans.rect.EnumeratePoints()
+                .Select(o => rectTrans.TransformPoint(o))
+                .DebugDrawPath(color, duration, true);
+        }
 
+        public static void DebugDrawRect(this RectTransform rectTrans, Color color, float duration)
+        {
+            Rect rect;
+            rectTrans.rect
+                .EnumeratePoints()
+                .Select(o => (Vector2)rectTrans.TransformPoint(o))
+                .GetRect(out rect);
+            Vector2 halfSize = rect.size * 0.5f;
+            rect.EnumeratePoints()
+                .Select(o => (Vector3)(o - halfSize))
+                .DebugDrawPath(color, duration, true);
+        }
     }
 }
