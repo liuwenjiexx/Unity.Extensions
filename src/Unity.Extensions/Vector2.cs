@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 namespace LWJ.Unity
@@ -246,5 +247,92 @@ namespace LWJ.Unity
             outBounds[3] = min - crossDir * lineWidth;
 
         }
+        #region Bezier
+
+        private static Material lineMat;
+
+        public static bool CalculateBezierTangent(this Vector2 start, Vector2 end, float arrowDist, out Vector2 startTangent, out Vector2 endTangent)
+        {
+            Vector2 dir;
+            float dist;
+
+            float angle = Vector2.Angle((end - start), Vector2.right);
+            if (angle > 90)
+            {
+                angle = 180 - angle;
+            }
+            bool horizontal = false;
+            if (angle < 45f)
+            {
+                horizontal = true;
+            }
+            else
+            {
+                horizontal = false;
+            }
+            if (horizontal)
+            {
+
+                dir = new Vector2(end.x - start.x, 0);
+            }
+            else
+            {
+                dir = new Vector2(0, end.y - start.y);
+            }
+            dist = dir.magnitude;
+            dir = dir.normalized;
+            float _arrowDist = dist * arrowDist;
+            startTangent = start + dir * _arrowDist;
+            endTangent = end + dir * -_arrowDist;
+
+            return horizontal;
+        }
+
+        public static void GLScreenBezier(this Vector2 start, Vector2 end, Color lineColor, float lineWidth, float lineStep, Material mat = null)
+        {
+            GLScreenBezier(start, end, 0.3f, lineColor, lineWidth, lineStep, mat);
+        }
+
+        public static void GLScreenBezier(this Vector2 start, Vector2 end, float arrowDist, Color lineColor, float lineWidth, float lineStep, Material mat = null)
+        {
+            Vector2 startTangent, endTangent;
+            CalculateBezierTangent(start, end, arrowDist, out startTangent, out endTangent);
+            GLScreenBezier(start, startTangent, end, endTangent, lineColor, lineWidth, lineStep, mat);
+        }
+
+        public static void GLScreenBezier(this Vector2 start, Vector2 startTangent, Vector2 end, Vector2 endTangent, Color lineColor, float lineWidth, float lineStep, Material mat = null)
+        {
+            if (mat == null)
+            {
+                if (lineMat == null)
+                {
+                    //lineMat = new Material("Shader \"Lines/Colored Blended\" {" +
+                    //               "SubShader { Pass { " +
+                    //               "    Blend SrcAlpha OneMinusSrcAlpha " +
+                    //               "    ZWrite Off Cull Off Fog { Mode Off } " +
+                    //               "    BindChannels {" +
+                    //               "      Bind \"vertex\", vertex Bind \"color\", color }" +
+                    //               "} } }");//生成画线的材质 
+                    //lineMat = new Material(Shader.Find("Lines/Colored Blended"));
+
+                    lineMat = new Material(Shader.Find("UI/Default"));
+                }
+                mat = lineMat;
+            }
+            GL.PushMatrix();
+            GL.LoadPixelMatrix();
+            mat.SetPass(0);
+
+
+            IEnumerable<Vector3> path;
+
+            path = start.EnumerateBezierPoints(end, startTangent, endTangent, lineStep).Select(o => (Vector3)o);
+
+            path.GLDrawPath(lineColor, Mathf.CeilToInt(lineWidth));
+
+            GL.PopMatrix();
+        }
+
+        #endregion
     }
 }

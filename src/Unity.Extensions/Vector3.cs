@@ -432,20 +432,20 @@ namespace LWJ.Unity
         }
 
 
-        public static void GLDrawPath(this IEnumerable<Vector3> points)
+        public static void GLDrawPath(this IEnumerable<Vector3> points, Color color)
         {
-            GLDrawPath(points, 1, false);
+            GLDrawPath(points, color, 1, false);
         }
 
-        public static void GLDrawPath(this IEnumerable<Vector3> points, int lineWidth)
+        public static void GLDrawPath(this IEnumerable<Vector3> points, Color color, int lineWidth)
         {
-            GLDrawPath(points, lineWidth, false);
+            GLDrawPath(points, color, lineWidth, false);
         }
 
-        public static void GLDrawPath(this IEnumerable<Vector3> points, int lineWidth, bool closed)
+        public static void GLDrawPath(this IEnumerable<Vector3> points, Color color, int lineWidth, bool closed)
         {
             GL.Begin(GL.LINE_STRIP);
-
+            GL.Color(color);
             Vector3 first = new Vector3();
             Vector3 prev = new Vector3();
             bool isFirst = true;
@@ -640,7 +640,7 @@ namespace LWJ.Unity
                     break;
                 }
 
-            } 
+            }
         }
 
         public static IEnumerable<Vector2> EnumerateBezierPoints(this Vector2 start, Vector2 end, Vector2 startTangent, Vector2 endTangent, float stepDistance)
