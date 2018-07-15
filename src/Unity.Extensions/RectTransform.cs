@@ -111,9 +111,7 @@ namespace LWJ.Unity
 
         public static void GizmosDrawRectLocal(this RectTransform rectTrans, Color color)
         {
-            rectTrans.rect.EnumeratePoints()
-                .Select(o => rectTrans.TransformPoint(o))
-                .GizmosDrawPath(color, true);
+            rectTrans.rect.GizmosDrawLocal(rectTrans, color);
         }
 
         public static void GizmosDrawRect(this RectTransform rectTrans, Color color)

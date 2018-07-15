@@ -101,11 +101,15 @@ namespace LWJ.Unity
 
         public static Rect AdjustInRect(this Rect src, Rect container)
         {
+            Vector2 srcMin = Vector2.Min(src.min, src.max);
+            Vector2 srcMax = Vector2.Max(src.min, src.max);
+            Vector2 dstMin = Vector2.Min(container.min, container.max);
+            Vector2 dstMax = Vector2.Max(container.min, container.max);
 
-            Vector2 dstSize = container.size;
-            Vector2 srcSize = src.size;
-            Vector2 minOffset = container.min - src.min;
-            Vector2 maxOffset = container.max - src.max;
+            Vector2 dstSize = dstMax - dstMin;
+            Vector2 srcSize = srcMax - srcMin;
+            Vector2 minOffset = dstMin - srcMin;
+            Vector2 maxOffset = dstMax - srcMax;
             Vector2 offset = Vector2.zero;
 
             if (srcSize.x >= dstSize.x)
@@ -138,6 +142,55 @@ namespace LWJ.Unity
             }
             return new Rect(src.min + offset, src.size);
         }
+
+        public static void GizmosDraw(this Rect rect)
+        {
+            GizmosDraw(rect, Color.white);
+        }
+
+        public static void GizmosDraw(this Rect rect, Color color)
+        {
+            rect.EnumeratePoints()
+                .Select(o =>(Vector3) o)
+                .GizmosDrawPath(color, true);
+        }
+
+        public static void GizmosDrawLocal(this Rect rect, Transform transform)
+        {
+            GizmosDrawLocal(rect, transform, Color.white);
+        }
+
+        public static void GizmosDrawLocal(this Rect rect, Transform transform, Color color)
+        {
+            rect.EnumeratePoints()
+                .Select(o => transform.TransformPoint(o))
+                .GizmosDrawPath(color, true);
+        }
+        public static void DebugDraw(this Rect rect)
+        {
+            DebugDraw(rect, Color.white, 0f);
+        }
+
+        public static void DebugDraw(this Rect rect, Color color, float duration = 0f)
+        {
+            rect.EnumeratePoints()
+                .Select(o => (Vector3)o)
+                .DebugDrawPath(color, duration, true);
+        }
+
+        public static void DebugDrawLocal(this Rect rect, Transform transform)
+        {
+            DebugDrawLocal(rect, transform, Color.white);
+        }
+
+        public static void DebugDrawLocal(this Rect rect, Transform transform, Color color, float duration = 0f)
+        {
+            rect.EnumeratePoints()
+                .Select(o => transform.TransformPoint(o))
+                .DebugDrawPath(color, duration, true);
+        }
+
+
 
     }
 }
