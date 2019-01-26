@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-namespace LWJ.UnityEditor
+namespace Core.UnityEditor
 {
     public static partial class Extensions
     {

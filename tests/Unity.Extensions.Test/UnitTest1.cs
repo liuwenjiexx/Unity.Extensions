@@ -1,5 +1,5 @@
 ﻿using System;
-using LWJ.Unity;
+using Core.Unity;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using UnityEngine;
 

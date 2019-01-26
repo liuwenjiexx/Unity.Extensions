@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-namespace LWJ.Unity.Extension.Colors
+namespace Core.Unity.Extension.Colors
 {
 
     public static partial class Extensions

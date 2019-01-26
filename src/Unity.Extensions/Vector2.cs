@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-namespace LWJ.Unity
+namespace Core.Unity
 {
     public static partial class Extensions
     {

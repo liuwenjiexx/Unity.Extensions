@@ -6,7 +6,7 @@ using UnityEngine;
 using Random = UnityEngine.Random;
 
 
-namespace LWJ.Unity
+namespace Core.Unity
 {
     public static partial class Extensions
     {

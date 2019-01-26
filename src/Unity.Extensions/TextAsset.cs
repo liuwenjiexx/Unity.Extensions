@@ -1,7 +1,7 @@
 ﻿using System.Xml;
 using UnityEngine;
 
-namespace LWJ.Unity
+namespace Core.Unity
 {
 
     public static partial class Extensions

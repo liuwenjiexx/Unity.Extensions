@@ -6,7 +6,7 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.EventSystems;
 
-namespace LWJ.Unity
+namespace Core.Unity
 {
     public partial class Extensions
     {

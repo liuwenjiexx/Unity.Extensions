@@ -5,7 +5,7 @@ using System.Text;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace LWJ.Unity
+namespace Core.Unity
 {
     public static partial class Extensions
     {

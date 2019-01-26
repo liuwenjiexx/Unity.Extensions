@@ -7,8 +7,8 @@
     <ProjectGuid>{EB09E3EB-BE95-4AAC-8240-801AAC16462C}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>LWJ.UnityEditor.Extensions</RootNamespace>
-    <AssemblyName>LWJ.UnityEditor.Extensions</AssemblyName>
+    <RootNamespace>Core.UnityEditor.Extensions</RootNamespace>
+    <AssemblyName>Core.UnityEditor.Extensions</AssemblyName>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />
@@ -64,6 +64,6 @@
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PostBuildEvent>copy $(TargetPath) $(SolutionDir)\src\UnityExtensions\Assets\LWJ\Extensions\Editor</PostBuildEvent>
+    <PostBuildEvent>copy $(TargetPath) $(SolutionDir)\src\Unity.Extensions.Unity\Assets\Core\Extensions\Editor</PostBuildEvent>
   </PropertyGroup>
 </Project>

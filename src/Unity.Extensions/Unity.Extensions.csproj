@@ -7,8 +7,8 @@
     <ProjectGuid>{6D1D7431-91B2-402A-9824-C0DF5802ADC8}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>LWJ.Unity.Extensions</RootNamespace>
-    <AssemblyName>LWJ.Unity.Extensions</AssemblyName>
+    <RootNamespace>Core.Unity.Extensions</RootNamespace>
+    <AssemblyName>Core.Unity.Extensions</AssemblyName>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />
@@ -77,6 +77,6 @@
     </PreBuildEvent>
   </PropertyGroup>
   <PropertyGroup>
-    <PostBuildEvent>copy $(TargetPath) $(SolutionDir)\src\Unity.Extensions.Unity\Assets\LWJ\Extensions</PostBuildEvent>
+    <PostBuildEvent>copy $(TargetPath) $(SolutionDir)\src\Unity.Extensions.Unity\Assets\Core\Extensions</PostBuildEvent>
   </PropertyGroup>
 </Project>

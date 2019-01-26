@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using UnityEngine;
 
-namespace LWJ.Unity
+namespace Core.Unity
 {
     public partial class Extensions
     {
