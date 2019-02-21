@@ -2,7 +2,11 @@
 using System.Linq;
 using UnityEngine;
 
+<<<<<<< HEAD:src/UnityEngine.Extensions/Matrix4x4.cs
 namespace UnityEngine.Extensions
+=======
+namespace Core.Unity
+>>>>>>> e2db7b97206b38fd85e98182bacbdb5df502aa77:src/Unity.Extensions/Matrix4x4.cs
 {
     public static partial class UnityExtensions
     {

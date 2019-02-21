@@ -7,8 +7,13 @@
     <ProjectGuid>{6D1D7431-91B2-402A-9824-C0DF5802ADC8}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
+<<<<<<< HEAD:src/UnityEngine.Extensions/UnityEngine.Extensions.csproj
     <RootNamespace>UnityEngine.Extension</RootNamespace>
     <AssemblyName>UnityEngine.Extensions</AssemblyName>
+=======
+    <RootNamespace>Core.Unity.Extensions</RootNamespace>
+    <AssemblyName>Core.Unity.Extensions</AssemblyName>
+>>>>>>> e2db7b97206b38fd85e98182bacbdb5df502aa77:src/Unity.Extensions/Unity.Extensions.csproj
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />
@@ -75,6 +80,10 @@
     </PreBuildEvent>
   </PropertyGroup>
   <PropertyGroup>
+<<<<<<< HEAD:src/UnityEngine.Extensions/UnityEngine.Extensions.csproj
     <PostBuildEvent>copy $(TargetPath) $(SolutionDir)\src\UnityEngine.Extensions.Unity\Assets\Plugins\UnityExtensions</PostBuildEvent>
+=======
+    <PostBuildEvent>copy $(TargetPath) $(SolutionDir)\src\Unity.Extensions.Unity\Assets\Core\Extensions</PostBuildEvent>
+>>>>>>> e2db7b97206b38fd85e98182bacbdb5df502aa77:src/Unity.Extensions/Unity.Extensions.csproj
   </PropertyGroup>
 </Project>

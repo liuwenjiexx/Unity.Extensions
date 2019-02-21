@@ -3,7 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
+<<<<<<< HEAD:src/UnityEngine.Extensions/Transform.cs
 namespace UnityEngine.Extensions
+=======
+namespace Core.Unity
+>>>>>>> e2db7b97206b38fd85e98182bacbdb5df502aa77:src/Unity.Extensions/Transform.cs
 {
     public static partial class UnityExtensions
     {

@@ -5,7 +5,11 @@ using System.Text;
 using UnityEngine;
 using UnityEngine.UI;
 
+<<<<<<< HEAD:src/UnityEngine.Extensions/VertexHelper.cs
 namespace UnityEngine.Extensions
+=======
+namespace Core.Unity
+>>>>>>> e2db7b97206b38fd85e98182bacbdb5df502aa77:src/Unity.Extensions/VertexHelper.cs
 {
     public static partial class UnityExtensions
     {

@@ -1,5 +1,9 @@
 ﻿using System;
+<<<<<<< HEAD
 using UnityEngine.Extensions;
+=======
+using Core.Unity;
+>>>>>>> e2db7b97206b38fd85e98182bacbdb5df502aa77
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using UnityEngine;
 

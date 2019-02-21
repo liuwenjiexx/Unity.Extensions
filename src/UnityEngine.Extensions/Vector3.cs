@@ -6,7 +6,11 @@ using UnityEngine;
 using Random = UnityEngine.Random;
 
 
+<<<<<<< HEAD:src/UnityEngine.Extensions/Vector3.cs
 namespace UnityEngine.Extensions
+=======
+namespace Core.Unity
+>>>>>>> e2db7b97206b38fd85e98182bacbdb5df502aa77:src/Unity.Extensions/Vector3.cs
 {
     public static partial class UnityExtensions
     {
