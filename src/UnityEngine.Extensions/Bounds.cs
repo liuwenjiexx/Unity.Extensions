@@ -182,6 +182,40 @@ namespace UnityEngine.Extensions
         }
 
 
+        public static IEnumerable<Vector3> EnumerateLines(this Bounds bounds)
+        {
+            Vector3 min = bounds.min, max = bounds.max;
+            yield return min;
+            yield return new Vector3(max.x, min.y, min.z);
+            yield return min;
+            yield return new Vector3(min.x, max.y, min.z);
+            yield return min;
+            yield return new Vector3(min.x, min.y, max.z);
+
+            yield return new Vector3(min.x, max.y, min.z);
+            yield return new Vector3(max.x, max.y, min.z);
+            yield return new Vector3(min.x, max.y, min.z);
+            yield return new Vector3(min.x, max.y, max.z);
+
+            yield return max;
+            yield return new Vector3(min.x, max.y, max.z);
+            yield return max;
+            yield return new Vector3(max.x, min.y, max.z);
+            yield return max;
+            yield return new Vector3(max.x, max.y, min.z);
+
+            yield return new Vector3(max.x, min.y, max.z);
+            yield return new Vector3(min.x, min.y, max.z);
+            yield return new Vector3(max.x, min.y, max.z);
+            yield return new Vector3(max.x, min.y, min.z);
+
+            yield return new Vector3(max.x, min.y, min.z);
+            yield return new Vector3(max.x, max.y, min.z);
+            yield return new Vector3(min.x, min.y, max.z);
+            yield return new Vector3(min.x, max.y, max.z);
+
+        }
+
         public static Bounds MultiplyMatrix(this Bounds bounds, Matrix4x4 matrix)
         {
             Vector3 min = new Vector3(float.MaxValue, float.MaxValue, float.MaxValue);

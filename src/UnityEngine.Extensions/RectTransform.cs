@@ -124,13 +124,13 @@ namespace UnityEngine.Extensions
             Vector2 halfSize = rect.size * 0.5f;
             rect.EnumeratePoints()
                 .Select(o => (Vector3)(o - halfSize))
-                .GizmosDrawPath(color, true);
+                .GizmosDrawLineStrip(color, true);
         }
         public static void DebugDrawRectLocal(this RectTransform rectTrans, Color color, float duration)
         {
             rectTrans.rect.EnumeratePoints()
                 .Select(o => rectTrans.TransformPoint(o))
-                .DebugDrawPath(color, duration, true);
+                .DebugDrawLineStrip(color, duration, true);
         }
 
         public static void DebugDrawRect(this RectTransform rectTrans, Color color, float duration)
@@ -143,7 +143,7 @@ namespace UnityEngine.Extensions
             Vector2 halfSize = rect.size * 0.5f;
             rect.EnumeratePoints()
                 .Select(o => (Vector3)(o - halfSize))
-                .DebugDrawPath(color, duration, true);
+                .DebugDrawLineStrip(color, duration, true);
         }
     }
 }

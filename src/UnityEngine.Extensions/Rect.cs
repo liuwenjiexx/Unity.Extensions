@@ -152,7 +152,7 @@ namespace UnityEngine.Extensions
         {
             rect.EnumeratePoints()
                 .Select(o =>(Vector3) o)
-                .GizmosDrawPath(color, true);
+                .GizmosDrawLineStrip(color, true);
         }
 
         public static void GizmosDrawLocal(this Rect rect, Transform transform)
@@ -164,7 +164,7 @@ namespace UnityEngine.Extensions
         {
             rect.EnumeratePoints()
                 .Select(o => transform.TransformPoint(o))
-                .GizmosDrawPath(color, true);
+                .GizmosDrawLineStrip(color, true);
         }
         public static void DebugDraw(this Rect rect)
         {
@@ -175,7 +175,7 @@ namespace UnityEngine.Extensions
         {
             rect.EnumeratePoints()
                 .Select(o => (Vector3)o)
-                .DebugDrawPath(color, duration, true);
+                .DebugDrawLineStrip(color, duration, true);
         }
 
         public static void DebugDrawLocal(this Rect rect, Transform transform)
@@ -187,7 +187,7 @@ namespace UnityEngine.Extensions
         {
             rect.EnumeratePoints()
                 .Select(o => transform.TransformPoint(o))
-                .DebugDrawPath(color, duration, true);
+                .DebugDrawLineStrip(color, duration, true);
         }
 
 

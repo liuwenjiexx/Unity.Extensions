@@ -328,7 +328,7 @@ namespace UnityEngine.Extensions
 
             path = start.EnumerateBezierPoints(end, startTangent, endTangent, lineStep).Select(o => (Vector3)o);
 
-            path.GLDrawPath(lineColor, Mathf.CeilToInt(lineWidth));
+            path.GLDrawLineStrip(lineColor, Mathf.CeilToInt(lineWidth));
 
             GL.PopMatrix();
         }

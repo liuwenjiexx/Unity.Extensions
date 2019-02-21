@@ -41,7 +41,9 @@ namespace UnityEngine.Extensions
 
         public static Vector3 Clamp(this Vector3 source, Bounds bounds)
         {
-            return Vector3.Max(Vector3.Min(source, bounds.max), bounds.min);
+            Vector3 min = Vector3.Min(bounds.min, bounds.max);
+            Vector3 max = Vector3.Max(bounds.min, bounds.max);
+            return Vector3.Max(Vector3.Min(source, max), min);
         }
 
         /// <summary>
@@ -432,17 +434,17 @@ namespace UnityEngine.Extensions
         }
 
 
-        public static void GLDrawPath(this IEnumerable<Vector3> points, Color color)
+        public static void GLDrawLineStrip(this IEnumerable<Vector3> points, Color color)
         {
-            GLDrawPath(points, color, 1, false);
+            GLDrawLineStrip(points, color, 1, false);
         }
 
-        public static void GLDrawPath(this IEnumerable<Vector3> points, Color color, int lineWidth)
+        public static void GLDrawLineStrip(this IEnumerable<Vector3> points, Color color, int lineWidth)
         {
-            GLDrawPath(points, color, lineWidth, false);
+            GLDrawLineStrip(points, color, lineWidth, false);
         }
 
-        public static void GLDrawPath(this IEnumerable<Vector3> points, Color color, int lineWidth, bool closed)
+        public static void GLDrawLineStrip(this IEnumerable<Vector3> points, Color color, int lineWidth, bool closed)
         {
             GL.Begin(GL.LINE_STRIP);
             GL.Color(color);
@@ -475,7 +477,7 @@ namespace UnityEngine.Extensions
 
         #region Gizmos Draw 
 
-        public static void GizmosDrawPath(this IEnumerable<Vector3> points, Color color, bool closed)
+        public static void GizmosDrawLineStrip(this IEnumerable<Vector3> points, Color color, bool closed)
         {
             Vector3 first = new Vector3();
             Vector3 last = new Vector3();
@@ -505,13 +507,34 @@ namespace UnityEngine.Extensions
 
 
 
+        public static void GizmosDrawLine(this IEnumerable<Vector3> points, Color color)
+        {
+            bool isStart = true;
+            Vector3 start = Vector3.zero;
+            Color oldColor = Gizmos.color;
+            Gizmos.color = color;
+            foreach (var p in points)
+            {
+                if (isStart)
+                {
+                    start = p;
+                    isStart = false;
+                }
+                else
+                {
+                    Gizmos.DrawLine(start, p);
+                    isStart = true;
+                }
+            }
+            Gizmos.color = oldColor;
+        }
 
 
         #endregion
 
         #region Debug Draw
 
-        public static void DebugDrawPath(this IEnumerable<Vector3> points, Color color, float duration, bool closed)
+        public static void DebugDrawLineStrip(this IEnumerable<Vector3> points, Color color, float duration, bool closed)
         {
             Vector3 first = new Vector3();
             Vector3 last = new Vector3();
@@ -534,6 +557,26 @@ namespace UnityEngine.Extensions
             {
                 Debug.DrawLine(last, first, color, duration);
             }
+        }
+
+        public static void DebugDrawLine(this IEnumerable<Vector3> points, Color color, float duration)
+        {
+            bool isStart = true;
+            Vector3 start = new Vector3();
+            foreach (var point in points)
+            {
+                if (isStart)
+                {
+                    start = point;
+                    isStart = false;
+                }
+                else
+                {
+                    Debug.DrawLine(start, point, color, duration);
+                    isStart = true;
+                }
+            }
+
         }
 
         #endregion
