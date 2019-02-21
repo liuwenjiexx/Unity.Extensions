@@ -47,7 +47,8 @@
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="UnityEngine">
-      <HintPath>..\..\..\Build\Debug\UnityEngine.dll</HintPath>
+      <HintPath>..\..\..\Library\UnityEngine.dll</HintPath>
+      <Private>False</Private>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -58,9 +59,9 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\src\Unity.Extensions\Unity.Extensions.csproj">
+    <ProjectReference Include="..\..\src\UnityEngine.Extensions\UnityEngine.Extensions.csproj">
       <Project>{6d1d7431-91b2-402a-9824-c0df5802adc8}</Project>
-      <Name>Unity.Extensions</Name>
+      <Name>UnityEngine.Extensions</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets" Condition="Exists('$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets')" />
