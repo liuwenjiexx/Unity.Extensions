@@ -4,11 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-<<<<<<< HEAD:src/UnityEngine.Extensions/Colors/Color32.cs
 namespace UnityEngine.Extensions.Colors
-=======
-namespace Core.Unity.Extension.Colors
->>>>>>> e2db7b97206b38fd85e98182bacbdb5df502aa77:src/Unity.Extensions/Colors/Color32.cs
 {
 
     public static partial class Extensions

@@ -1,10 +1,6 @@
 ﻿using UnityEngine;
 
-<<<<<<< HEAD:src/UnityEngine.Extensions/Color32.cs
 namespace UnityEngine.Extensions
-=======
-namespace Core.Unity
->>>>>>> e2db7b97206b38fd85e98182bacbdb5df502aa77:src/Unity.Extensions/Color32.cs
 {
     public static partial class UnityExtensions
     {

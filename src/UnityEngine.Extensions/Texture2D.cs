@@ -2,11 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-<<<<<<< HEAD:src/UnityEngine.Extensions/Texture2D.cs
 namespace UnityEngine.Extensions
-=======
-namespace Core.Unity
->>>>>>> e2db7b97206b38fd85e98182bacbdb5df502aa77:src/Unity.Extensions/Texture2D.cs
 {
     public static partial class UnityExtensions
     {

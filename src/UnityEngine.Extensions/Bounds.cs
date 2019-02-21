@@ -6,11 +6,7 @@ using UnityEngine;
 using Random = UnityEngine.Random;
 
 
-<<<<<<< HEAD:src/UnityEngine.Extensions/Bounds.cs
 namespace UnityEngine.Extensions
-=======
-namespace Core.Unity
->>>>>>> e2db7b97206b38fd85e98182bacbdb5df502aa77:src/Unity.Extensions/Bounds.cs
 {
     public static partial class UnityExtensions
     {

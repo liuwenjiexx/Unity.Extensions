@@ -1,11 +1,7 @@
 ﻿using System.Text;
 using UnityEngine;
 
-<<<<<<< HEAD:src/UnityEngine.Extensions/WWWForm.cs
 namespace UnityEngine.Extensions
-=======
-namespace Core.Unity
->>>>>>> e2db7b97206b38fd85e98182bacbdb5df502aa77:src/Unity.Extensions/WWWForm.cs
 {
     public static partial class UnityExtensions
     {

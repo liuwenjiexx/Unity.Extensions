@@ -7,13 +7,8 @@
     <ProjectGuid>{EB09E3EB-BE95-4AAC-8240-801AAC16462C}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-<<<<<<< HEAD
     <RootNamespace>UnityEditor.Extensions</RootNamespace>
     <AssemblyName>UnityEditor.Extensions</AssemblyName>
-=======
-    <RootNamespace>Core.UnityEditor.Extensions</RootNamespace>
-    <AssemblyName>Core.UnityEditor.Extensions</AssemblyName>
->>>>>>> e2db7b97206b38fd85e98182bacbdb5df502aa77
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />
@@ -68,10 +63,6 @@
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-<<<<<<< HEAD
     <PostBuildEvent>copy $(TargetPath) $(SolutionDir)\src\UnityEngine.Extensions.Unity\Assets\Plugins\UnityExtensions\Editor</PostBuildEvent>
-=======
-    <PostBuildEvent>copy $(TargetPath) $(SolutionDir)\src\Unity.Extensions.Unity\Assets\Core\Extensions\Editor</PostBuildEvent>
->>>>>>> e2db7b97206b38fd85e98182bacbdb5df502aa77
   </PropertyGroup>
 </Project>

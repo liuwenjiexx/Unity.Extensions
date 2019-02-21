@@ -2,11 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-<<<<<<< HEAD:src/UnityEngine.Extensions/Vector2Int.cs
 namespace UnityEngine.Extensions
-=======
-namespace Core.Unity
->>>>>>> e2db7b97206b38fd85e98182bacbdb5df502aa77:src/Unity.Extensions/Vector2Int.cs
 {
     public static partial class UnityExtensions
     {
