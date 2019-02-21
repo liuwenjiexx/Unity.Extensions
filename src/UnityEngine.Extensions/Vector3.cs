@@ -724,6 +724,26 @@ namespace UnityEngine.Extensions
         }
         #endregion
 
+        #region Lerp
+
+        public static Vector3 ArcLerp(this Vector3 start, Vector3 end, float arc, float t)
+        {
+            Vector3 pos;
+
+            Vector3 offset = end - start;
+            float radius = offset.magnitude * 0.5f;
+            var center = (start + end) * 0.5f;
+            center -= new Vector3(0, radius * arc, 0);
+
+            var riseRelCenter = start - center;
+            var setRelCenter = end - center;
+
+            pos = Vector3.Slerp(riseRelCenter, setRelCenter, t);
+            pos += center;
+            return pos;
+        }
+
+        #endregion
 
     }
 
