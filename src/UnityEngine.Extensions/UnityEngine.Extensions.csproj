@@ -52,12 +52,14 @@
     <Compile Include="Color32.cs" />
     <Compile Include="Colors\Color32.cs" />
     <Compile Include="Extensions.cs" />
+    <Compile Include="System\IO.cs" />
     <Compile Include="GameObject.cs" />
     <Compile Include="Matrix4x4.cs" />
     <Compile Include="Mesh.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Rect.cs" />
     <Compile Include="RectTransform.cs" />
+    <Compile Include="System\String.cs" />
     <Compile Include="TextAsset.cs" />
     <Compile Include="Texture2D.cs" />
     <Compile Include="Transform.cs" />
@@ -75,6 +77,6 @@
     </PreBuildEvent>
   </PropertyGroup>
   <PropertyGroup>
-    <PostBuildEvent>copy $(TargetPath) $(SolutionDir)\src\UnityEngine.Extensions.Unity\Assets\Plugins\UnityExtensions</PostBuildEvent>
+    <PostBuildEvent>copy $(TargetPath) $(SolutionDir)\src\UnityEngine.Extensions.Unity\Assets\UnityExtensions</PostBuildEvent>
   </PropertyGroup>
 </Project>

@@ -106,6 +106,8 @@ namespace UnityEngine.Extensions
                 if (!r.enabled)
                     continue;
                 mf = r.GetComponent<MeshFilter>();
+                if (!mf || !mf.sharedMesh)
+                    continue;
                 tmp = mf.sharedMesh.bounds;
                 if (tmp.size == Vector3.zero)
                     continue;
