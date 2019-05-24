@@ -31,7 +31,7 @@ namespace System
         /// <param name="input"></param>
         /// <param name="values"></param>
         /// <returns></returns>
-        public static string FormatString(this string input, Dictionary<string, object> values)
+        public static string FormatString(this string input, Dictionary<string, object> values, IFormatProvider formatProvider = null)
         {
             string result;
 
@@ -50,17 +50,17 @@ namespace System
 
                 if (value != null)
                 {
-
-                    if (format.Length > 0)
-                    {
-                        IFormattable formattable = value as IFormattable;
-                        if (formattable != null)
-                        {
-                            ret = formattable.ToString(format, null);
-                        }
-                    }
-                    if (ret == null)
-                        ret = value.ToString();
+                    ret = string.Format(formatProvider, "{0:" + format + "}", value);
+                    //if (format.Length > 0)
+                    //{
+                    //    IFormattable formattable = value as IFormattable;
+                    //    if (formattable != null)
+                    //    {
+                    //        ret = formattable.ToString(format, null);
+                    //    }
+                    //}
+                    //if (ret == null)
+                    //    ret = value.ToString();
                 }
                 else
                 {
