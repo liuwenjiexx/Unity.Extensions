@@ -25,13 +25,17 @@ namespace System
 
         private static Regex formatStringRegex = new Regex("(?<!\\{)\\{\\$([^}:]*)(:([^}]*))?\\}(?!\\})");
 
+        public static string FormatString(this string input, Dictionary<string, object> values)
+        {
+            return FormatString(input, null, values);
+        }
         /// <summary>
         /// format:{$name:format} 
         /// </summary>
         /// <param name="input"></param>
         /// <param name="values"></param>
         /// <returns></returns>
-        public static string FormatString(this string input, Dictionary<string, object> values, IFormatProvider formatProvider = null)
+        public static string FormatString(this string input, IFormatProvider formatProvider ,Dictionary<string, object> values)
         {
             string result;
 

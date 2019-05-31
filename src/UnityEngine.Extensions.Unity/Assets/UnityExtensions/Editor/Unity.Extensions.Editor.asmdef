@@ -1,8 +1,12 @@
 {
-    "name": "UnityExtensions",
-    "references": [],
+    "name": "Unity.Extensions.Editor",
+    "references": [
+        "Unity.Extensions"
+    ],
     "optionalUnityReferences": [],
-    "includePlatforms": [],
+    "includePlatforms": [
+        "Editor"
+    ],
     "excludePlatforms": [],
     "allowUnsafeCode": false,
     "overrideReferences": false,
