@@ -64,6 +64,6 @@
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PostBuildEvent>copy $(TargetPath) $(SolutionDir)\src\UnityEngine.Extensions.Unity\Assets\UnityExtensions\Editor</PostBuildEvent>
+    <PostBuildEvent>copy $(TargetPath) $(SolutionDir)\src\UnityEngine.Extensions.Unity\Assets\Plugins\UnityExtensions\Editor</PostBuildEvent>
   </PropertyGroup>
 </Project>

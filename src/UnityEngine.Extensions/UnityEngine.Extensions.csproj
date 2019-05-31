@@ -77,6 +77,6 @@
     </PreBuildEvent>
   </PropertyGroup>
   <PropertyGroup>
-    <PostBuildEvent>copy $(TargetPath) $(SolutionDir)\src\UnityEngine.Extensions.Unity\Assets\UnityExtensions</PostBuildEvent>
+    <PostBuildEvent>copy $(TargetPath) $(SolutionDir)\src\UnityEngine.Extensions.Unity\Assets\Plugins\UnityExtensions</PostBuildEvent>
   </PropertyGroup>
 </Project>
