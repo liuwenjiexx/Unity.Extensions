@@ -13,20 +13,24 @@ namespace System.IO
                 File.SetAttributes(path, FileAttributes.Normal);
         }
 
+        public static string ReplaceDirectorySeparatorChar(this string path)
+        {
+            char separatorChar = Path.DirectorySeparatorChar;
+            if (separatorChar == '/')
+                path = path.Replace('\\', separatorChar);
+            else
+                path = path.Replace('/', separatorChar);
+
+            return path;
+        }
+
 
         public static bool PathStartsWithDirectory(this string path, string dir)
         {
             char separatorChar = Path.DirectorySeparatorChar;
-            if (separatorChar == '/')
-            {
-                path = path.Replace('\\', separatorChar);
-                dir = dir.Replace('\\', separatorChar);
-            }
-            else
-            {
-                path = path.Replace('/', separatorChar);
-                dir = dir.Replace('/', separatorChar);
-            }
+            path = path.ReplaceDirectorySeparatorChar();
+            dir = dir.ReplaceDirectorySeparatorChar();
+
             path = path.ToLower();
             dir = dir.ToLower();
             if (!dir.EndsWith(separatorChar.ToString()))
@@ -36,17 +40,9 @@ namespace System.IO
 
         public static bool PathStartsWith(this string path, string dir)
         {
-            char separatorChar = Path.DirectorySeparatorChar;
-            if (separatorChar == '/')
-            {
-                path = path.Replace('\\', separatorChar);
-                dir = dir.Replace('\\', separatorChar);
-            }
-            else
-            {
-                path = path.Replace('/', separatorChar);
-                dir = dir.Replace('/', separatorChar);
-            }
+
+            path = path.ReplaceDirectorySeparatorChar();
+            dir = dir.ReplaceDirectorySeparatorChar();
             path = path.ToLower();
             dir = dir.ToLower();
 
