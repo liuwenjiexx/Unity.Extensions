@@ -35,7 +35,14 @@ namespace UnityEngine.Extensions
             return result;
         }
 
-
+        public static void RemoveComponent<T>(this GameObject go)
+            where T : Component
+        {
+            foreach (var c in go.GetComponents<T>())
+            {
+                UnityEngine.Object.Destroy(c);
+            }
+        }
 
         #region GetRendererBounds
 
@@ -244,5 +251,22 @@ namespace UnityEngine.Extensions
         {
             return go.transform as RectTransform;
         }
+
+        public static void ChangeLayer(this GameObject go, int layer)
+        {
+            ChangeLayer(go.transform, layer);
+        }
+
+        static void ChangeLayer(Transform transform, int layer)
+        {
+            transform.gameObject.layer = layer;
+
+            foreach (Transform child in transform)
+            {
+                ChangeLayer(child, layer);
+            }
+        }
+
+
     }
 }

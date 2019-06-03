@@ -440,6 +440,7 @@ namespace UnityEngine.Extensions
                     newCallback(go);
             }
         }
+    
 
     }
 }

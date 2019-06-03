@@ -1,7 +1,8 @@
-/.vs/
+.vs/
 /packages/MSTest.TestAdapter*
 /packages/MSTest.TestFramework*
 /src/UnityEngine.Extensions/bin
 /src/UnityEngine.Extensions/obj
 /src/UnityEditor.Extensions/bin
 /src/UnityEditor.Extensions/obj
+/Build/[0-9]*

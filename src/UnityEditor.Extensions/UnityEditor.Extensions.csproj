@@ -38,8 +38,7 @@
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
     <Reference Include="UnityEditor">
-      <HintPath>..\..\..\Library\UnityEditor.dll</HintPath>
-      <Private>False</Private>
+      <HintPath>..\..\Library\UnityEditor.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\..\Library\UnityEngine.dll</HintPath>
@@ -64,6 +63,6 @@
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PostBuildEvent>copy $(TargetPath) $(SolutionDir)\src\UnityEngine.Extensions.Unity\Assets\Plugins\UnityExtensions\Editor</PostBuildEvent>
+    <PostBuildEvent>copy $(TargetPath) $(SolutionDir)\src\Unity.Extensions\Assets\Plugins\Unity.Extensions\Editor</PostBuildEvent>
   </PropertyGroup>
 </Project>

@@ -9,3 +9,5 @@
 /.vs/
 /build/
 *.apk
+/Logs/
+/obj/

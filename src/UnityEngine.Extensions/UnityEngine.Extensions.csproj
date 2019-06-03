@@ -7,7 +7,7 @@
     <ProjectGuid>{6D1D7431-91B2-402A-9824-C0DF5802ADC8}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>UnityEngine.Extension</RootNamespace>
+    <RootNamespace>UnityEngine.Extensions</RootNamespace>
     <AssemblyName>UnityEngine.Extensions</AssemblyName>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
@@ -38,12 +38,10 @@
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
     <Reference Include="UnityEngine">
-      <HintPath>..\..\..\Library\UnityEngine.dll</HintPath>
-      <Private>False</Private>
+      <HintPath>..\UnityEditor.Extensions\bin\Debug\UnityEngine.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.UI">
-      <HintPath>..\..\..\Library\UnityEngine.UI.dll</HintPath>
-      <Private>False</Private>
+      <HintPath>..\UnityEditor.Extensions\bin\Debug\UnityEngine.UI.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -64,6 +62,7 @@
     <Compile Include="Texture2D.cs" />
     <Compile Include="Transform.cs" />
     <Compile Include="UI\Image.cs" />
+    <Compile Include="Uri.cs" />
     <Compile Include="Vector2.cs" />
     <Compile Include="Vector2Int.cs" />
     <Compile Include="Vector3.cs" />
@@ -77,6 +76,6 @@
     </PreBuildEvent>
   </PropertyGroup>
   <PropertyGroup>
-    <PostBuildEvent>copy $(TargetPath) $(SolutionDir)\src\UnityEngine.Extensions.Unity\Assets\Plugins\UnityExtensions</PostBuildEvent>
+    <PostBuildEvent>copy $(TargetPath) $(SolutionDir)\src\Unity.Extensions\Assets\Plugins\Unity.Extensions</PostBuildEvent>
   </PropertyGroup>
 </Project>

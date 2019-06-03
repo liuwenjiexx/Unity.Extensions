@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.28729.10
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnityEditor.Extensions", "src\UnityEditor.Extensions\UnityEditor.Extensions.csproj", "{EB09E3EB-BE95-4AAC-8240-801AAC16462C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnityEngine.Extensions", "src\UnityEngine.Extensions\UnityEngine.Extensions.csproj", "{6D1D7431-91B2-402A-9824-C0DF5802ADC8}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{EB09E3EB-BE95-4AAC-8240-801AAC16462C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EB09E3EB-BE95-4AAC-8240-801AAC16462C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EB09E3EB-BE95-4AAC-8240-801AAC16462C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EB09E3EB-BE95-4AAC-8240-801AAC16462C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6D1D7431-91B2-402A-9824-C0DF5802ADC8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6D1D7431-91B2-402A-9824-C0DF5802ADC8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6D1D7431-91B2-402A-9824-C0DF5802ADC8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6D1D7431-91B2-402A-9824-C0DF5802ADC8}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {849ECD1C-676E-4E45-8C81-D0CCA54BAF43}
+	EndGlobalSection
+EndGlobal
