@@ -6,3 +6,5 @@
 /src/UnityEditor.Extensions/bin
 /src/UnityEditor.Extensions/obj
 /Build/[0-9]*
+/Build/Packages/*/*.pdb
+/Build/Packages/*/*.pdb.meta

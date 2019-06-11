@@ -1,0 +1,2 @@
+.cs 放在unity 工程里汇报错
+error: this plugin unityengine.coremodule.dll to assure forward compatbilty, only 
