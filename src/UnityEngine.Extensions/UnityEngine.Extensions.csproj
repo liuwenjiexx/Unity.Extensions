@@ -38,10 +38,10 @@
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
     <Reference Include="UnityEngine">
-      <HintPath>..\UnityEditor.Extensions\bin\Debug\UnityEngine.dll</HintPath>
+      <HintPath>..\..\Library\UnityEngine.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.UI">
-      <HintPath>..\UnityEditor.Extensions\bin\Debug\UnityEngine.UI.dll</HintPath>
+      <HintPath>..\..\Library\UnityEngine.UI.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -50,14 +50,13 @@
     <Compile Include="Color32.cs" />
     <Compile Include="Colors\Color32.cs" />
     <Compile Include="Extensions.cs" />
-    <Compile Include="System\IO.cs" />
     <Compile Include="GameObject.cs" />
+    <Compile Include="GUI\ValueScope.cs" />
     <Compile Include="Matrix4x4.cs" />
     <Compile Include="Mesh.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Rect.cs" />
     <Compile Include="RectTransform.cs" />
-    <Compile Include="System\String.cs" />
     <Compile Include="TextAsset.cs" />
     <Compile Include="Texture2D.cs" />
     <Compile Include="Transform.cs" />
@@ -70,12 +69,18 @@
     <Compile Include="WWW.cs" />
     <Compile Include="WWWForm.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Extensions\Extensions.csproj">
+      <Project>{2d14deeb-c0e9-4e64-b94b-a4422371ca97}</Project>
+      <Name>Extensions</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PreBuildEvent>
     </PreBuildEvent>
   </PropertyGroup>
   <PropertyGroup>
-    <PostBuildEvent>copy $(TargetPath) $(SolutionDir)\src\Unity.Extensions\Assets\Plugins\Unity.Extensions</PostBuildEvent>
+    <PostBuildEvent>copy $(TargetPath) $(SolutionDir)\..\Assets\Plugins\Unity.Extensions</PostBuildEvent>
   </PropertyGroup>
 </Project>

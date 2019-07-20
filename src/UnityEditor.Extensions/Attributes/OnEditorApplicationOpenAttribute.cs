@@ -5,6 +5,7 @@ using UnityEditor;
 using UnityEngine;
 using System.Linq;
 using System.Reflection;
+using System.Reflection.Extensions;
 
 namespace UnityEditor
 {
@@ -30,10 +31,11 @@ namespace UnityEditor
 
                 foreach (var mInfo in AppDomain.CurrentDomain
                        .GetAssemblies()
+                       .Referenced(new Assembly[] { typeof(OnEditorApplicationOpenAttribute).Assembly })
                        .SelectMany(o => o.GetTypes())
                        .SelectMany(o => o.GetMethods(BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Static))
                        .Where(o => o.IsDefined(typeof(OnEditorApplicationOpenAttribute), false) && o.GetParameters().Length == 0)
-                       .OrderBy(o => ((OnEditorApplicationOpenAttribute)o.GetCustomAttributes(typeof(OnEditorApplicationOpenAttribute), false)[0]).m_CallbackOrder))
+                       .OrderBy(o => o.GetCustomAttribute<OnEditorApplicationOpenAttribute>(false).m_CallbackOrder))
                 {
                     mInfo.Invoke(null, null);
                 }
