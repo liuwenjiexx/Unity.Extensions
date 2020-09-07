@@ -1,0 +1,18 @@
+{
+    "name": "UnityEditor.Extensions",
+    "references": [
+        "GUID:0bf52c64aa6360747b617b3849166b16",
+        "GUID:d6d8700145c5e674ca2d63d847d20cc6"
+    ],
+    "optionalUnityReferences": [],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": []
+}

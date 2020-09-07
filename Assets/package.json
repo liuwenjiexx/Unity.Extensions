@@ -1,0 +1,14 @@
+{
+  "name": "unity.extensions",
+  "displayName": "Unity Extensions",
+  "version": "0.0.1",
+  "unity": "2019.1",
+  "description": "",
+  "keywords": [
+    "unity",
+    "extension",
+    "editor"
+  ],
+  "category": "Unity",
+  "repoPackagePath": "../UnityPackages"
+}
